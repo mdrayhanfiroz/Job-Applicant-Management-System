@@ -1,0 +1,100 @@
+﻿@model masterdetailsCore.Models.ViewModels.CandidateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Add New Candidate</h2>
+        <form asp-action="Create" asp-controller="Candidates" enctype="multipart/form-data" method="post">
+            <div class="row">
+
+                <div class="col-6">
+
+                    <div class="row mb-2">
+                        <label asp-for="CandidateName" class="col-form-label col-3"></label>
+                        <div class="col-6">
+                            <input asp-for="CandidateName" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <span asp-validation-for="CandidateName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label asp-for="DateofBirth" class="col-form-label col-3"></label>
+                        <div class="col-6">
+                            <input asp-for="DateofBirth" class="form-control" type="date" />
+                        </div>
+                        <div class="col-3">
+                            <span asp-validation-for="DateofBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-2">
+                        <label asp-for="Phone" class="col-form-label col-3"></label>
+                        <div class="col-6">
+                            <input asp-for="Phone" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-2">
+                        <label asp-for="Image" class="col-form-label col-3"></label>
+                        <div class="col-6">
+                            <input asp-for="Image" class="form-control" type="file" />
+                        </div>
+                        <div class="col-3">
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-2 ">
+                        <label asp-for="Fresher" class="col-form-label col-3"></label>
+
+                        <div class="col-6 mt-2">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Fresher" />
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-6">
+
+                    <h3 class="display-5">Select Your Skills</h3>
+                    <div class="d-flex justify-content-end">
+                        <a id="btnPlus" class="btn btn-success "><i class="fa fa-plus"> </i></a>
+                    </div>
+                    <div id="skillContainer">
+                        <script>
+                            LoadData();
+                        </script>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="row mb-2">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary" type="submit"> <i class="fa fa-save"></i>Save</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,30 @@
+﻿@model masterdetailsCore.Models.Skill
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3> Add New Skill </h3>
+
+<form asp-action="Create" asp-controller="Skills" method="post">
+    <div class="row">
+        <div class="col">
+            <div class="row mb-2">
+                <label asp-for="SkillName" class="col-form-label col-2"></label>
+                <div class="col-8">
+                    <input asp-for="SkillName" class="form-control" />
+                </div>
+                <div class="col-2">
+                    <span asp-validation-for="SkillName" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" type="submit"> <i class="fa fa-save"></i>Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

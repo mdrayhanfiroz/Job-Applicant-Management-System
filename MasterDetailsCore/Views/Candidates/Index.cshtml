@@ -1,0 +1,136 @@
+﻿@model IEnumerable<masterdetailsCore.Models.Candidate>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h5 class="display-4">Candidate List</h5>
+
+<div class="d-flex justify-content-end mt-2 mb-2">
+    <a asp-action="Create" asp-controller="Candidates" class="btn btn-primary btn-sm">Add New Candidate</a>
+</div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="card mb-2">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <label asp-for="@item.Image" >
+                    @{
+                        var b64 = Convert.ToBase64String(item.Image);
+
+
+                        var imgsrc = String.Format("data:image/jpg;base64,{0}", b64);
+                    }
+
+                    <img src="@imgsrc" style="width:50px; height:50px;" />
+
+
+                    </label>
+
+
+                <label class="me-2">
+                    <b>Candidate: </b>@Html.DisplayFor(x=>item.CandidateName)
+                </label>
+
+
+                <label class="me-2">
+                    <b>Date of Birth: </b>@Html.DisplayFor(x=>item.DateofBirth)
+                </label>
+
+                </div>
+            <div class="d-flex justify-content-end">
+                <a href="@Url.Action("Edit", "Candidates", new {id=item.CandidateId})"  , class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                ||
+                <a href="@Url.Action("Delete", "Candidates", new {id=item.CandidateId})", class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+            </div>
+            </div>
+            <div class="card-body">
+            <table class=" table table-bordered table-striped table-sm text-center">
+
+                <thead>
+                    <tr>
+                        <th>Skill Id</th>
+                        <th>Skill Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item1 in item.CandidateSkills)
+                    {
+                           <tr>
+                               <td>@Html.DisplayFor(x=>item1.Skill.SkillId)</td>
+                               <td>@Html.DisplayFor(x=>item1.Skill.SkillName)</td>
+                           </tr> 
+                    }
+                </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+
+
+    }
+
+
+
+    
+
+@* <table class=" table table-bordered table-striped table-sm text-center">
+    <thead>
+
+        <tr>
+            <th>@Html.DisplayNameFor(x=>x.CandidateName)</th>
+
+            <th>@Html.DisplayNameFor(x=>x.DateofBirth)</th>
+
+            <th>@Html.DisplayNameFor(x=>x.Phone)</th>
+
+            <th>@Html.DisplayNameFor(x=>x.Image)</th>
+
+            <th>@Html.DisplayNameFor(x=>x.Fresher)</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@Html.DisplayFor(x=>item.CandidateName)</td>
+                <td>@Html.DisplayFor(x=>item.DateofBirth)</td>
+                <td>@Html.DisplayFor(x=>item.Phone)</td>
+
+                <td>
+                   
+                    @{
+                        var b64 = Convert.ToBase64String(item.Image);
+
+
+                        var imgsrc = String.Format("data:image/jpg;base64,{0}", b64);
+                    }
+
+                    <img src="@imgsrc" style="width:50px; height:50px;"/>
+                
+                </td>
+
+
+                <td>@Html.DisplayFor(x=>item.Fresher)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CandidateId" class="btn btn-primary"><i class="fa fa-edit"></i></a> 
+
+                    <a asp-action="Delete" asp-route-id="@item.CandidateId" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+ *@
+
